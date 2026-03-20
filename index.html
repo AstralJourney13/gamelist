@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微恐射击游戏竞品库 - 38款全球产品深度分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(45, 55, 72, 0.6);
+            border-radius: 16px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 178, 172, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #38b2ac;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #a0aec0;
+            margin-bottom: 20px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .stat-item {
+            background: rgba(56, 178, 172, 0.1);
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(56, 178, 172, 0.3);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #38b2ac;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #a0aec0;
+            margin-top: 5px;
+        }
+
+        /* 筛选栏 */
+        .filter-bar {
+            background: rgba(45, 55, 72, 0.6);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-label {
+            color: #ed8936;
+            font-weight: 600;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: rgba(56, 178, 172, 0.15);
+            border: 1px solid rgba(56, 178, 172, 0.4);
+            border-radius: 20px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #38b2ac;
+            border-color: #38b2ac;
+            color: #1a202c;
+            transform: translateY(-2px);
+        }
+
+        /* 搜索框 */
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(26, 32, 44, 0.6);
+            border: 1px solid rgba(56, 178, 172, 0.4);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 0.95em;
+        }
+
+        .search-box input::placeholder {
+            color: #718096;
+        }
+
+        /* 游戏网格 */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* 游戏卡片 */
+        .game-card {
+            background: rgba(45, 55, 72, 0.8);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(56, 178, 172, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: #38b2ac;
+            box-shadow: 0 20px 40px rgba(56, 178, 172, 0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            position: relative;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(237, 137, 54, 0.95);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #38b2ac;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .steam-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #38b2ac;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9em;
+            padding: 4px 10px;
+            background: rgba(56, 178, 172, 0.1);
+            border-radius: 6px;
+        }
+
+        .steam-link:hover {
+            background: #38b2ac;
+            color: #1a202c;
+            transform: translateX(3px);
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(56, 178, 172, 0.15);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            color: #81e6d9;
+            border: 1px solid rgba(56, 178, 172, 0.3);
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .stat-box {
+            background: rgba(26, 32, 44, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #38b2ac;
+        }
+
+        .stat-box-label {
+            font-size: 0.75em;
+            color: #a0aec0;
+            margin-bottom: 4px;
+        }
+
+        .stat-box-value {
+            font-size: 1em;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .game-usp {
+            background: rgba(237, 137, 54, 0.1);
+            border-left: 3px solid #ed8936;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: #fbd38d;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .game-commercial {
+            display: inline-block;
+            background: rgba(72, 187, 120, 0.15);
+            color: #68d391;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 1px solid rgba(72, 187, 120, 0.3);
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats-bar {
+                gap: 15px;
+            }
+        }
+
+        /* 加载动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .empty-state svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🎮 微恐射击游戏竞品库</h1>
+            <p>38款全球GaaS恐怖射击游戏深度分析 | 数据来源：Steam Charts, SteamDB</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalGames">38</div>
+                    <div class="stat-label">款游戏</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">27</div>
+                    <div class="stat-label">活跃运营</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">单机标杆</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">失败案例</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="filter-bar">
+            <span class="filter-label">🔍 筛选：</span>
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="pvpve">PvPvE</button>
+            <button class="filter-btn" data-filter="pve">纯PvE</button>
+            <button class="filter-btn" data-filter="搜打撤">搜打撤</button>
+            <button class="filter-btn" data-filter="社交恐怖">社交恐怖</button>
+            <button class="filter-btn" data-filter="成功">商业成功</button>
+            <button class="filter-btn" data-filter="失败">失败案例</button>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索游戏名称、标签或特点...">
+            </div>
+        </div>
+
+        <!-- 游戏网格 -->
+        <div class="games-grid" id="gamesGrid">
+            <!-- 游戏卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 空状态 -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3>没有找到匹配的游戏</h3>
+            <p>尝试调整筛选条件或搜索关键词</p>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>📊 数据更新时间：2026年3月 | CFH项目组竞品分析</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">
+                点击游戏标题访问Steam页面 | 数据来源：Steam Charts、SteamDB、官方公告
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 游戏数据
+        const gamesData = [
+        {
+                "游戏名称": "Arc Raiders",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "481,966 (2025.11.16)",
+                "当前活跃玩家(2026.3)": "12-14万 🔻-4.4%",
+                "累计销量/玩家": "400万份(前两周)",
+                "商业表现": "✅非常盈利$75M已回本",
+                "核心USP": "TPS提取射击(稀缺)/多平台跨平台/科幻机器人/商业成功案例",
+                "发行日期": "2025-10-30"
+        },
+        {
+                "游戏名称": "Hunt: Showdown 1896",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "60,124 (2024)",
+                "当前活跃玩家(2026.3)": "1.5万 🔻-7%",
+                "累计销量/玩家": "1000万玩家",
+                "商业表现": "✅长期稳定DLC变现",
+                "核心USP": "赏金竞争机制/音频战术核心/怪异西部风格/长期运营标杆",
+                "发行日期": "2019-08-27"
+        },
+        {
+                "游戏名称": "Escape from Tarkov（逃离塔科夫）",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "47,800 (Steam 2025.11)",
+                "当前活跃玩家(2026.3)": "1.2-1.3万(Steam)🔻-8.8%",
+                "累计销量/玩家": "未公开(估算数百万)",
+                "商业表现": "✅持续盈利版本差异化",
+                "核心USP": "极限硬核体验/深度枪械改装/真实战术/Wipe重置新鲜感",
+                "发行日期": "2017-07-00"
+        },
+        {
+                "游戏名称": "Gray Zone Warfare",
+                "标签组合": "微恐、合作、射击、搜打撤、PvEvP",
+                "Steam峰值同时在线": "72,548 (2024.5.5)",
+                "当前活跃玩家(2026.3)": "2-2.5千📉峰值暴跌97%",
+                "累计销量/玩家": "120万份",
+                "商业表现": "⚠️EA阶段未公开",
+                "核心USP": "开放世界设计/PvE优先低压/热带丛林设定/三阵营剧情",
+                "发行日期": "2024-04-30"
+        },
+        {
+                "游戏名称": "Exoborne",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "测试峰值4288",
+                "当前活跃玩家(2026.3)": "⏳未发布",
+                "累计销量/玩家": "未知",
+                "商业表现": "⏳未发布",
+                "核心USP": "环境灾害系统/Exo装甲机制/开放世界",
+                "发行日期": "未发布(测试中)"
+        },
+        {
+                "游戏名称": "Dark and Darker",
+                "标签组合": "微恐、合作、搜打撤、PvPvE",
+                "Steam峰值同时在线": "57,164 (2024.6.23)",
+                "当前活跃玩家(2026.3)": "4-6千📉下降81%",
+                "累计销量/玩家": "未公开",
+                "商业表现": "✅盈利稳定",
+                "核心USP": "奇幻+提取结合/近战战术/职业配合深度",
+                "发行日期": "2023-08-07"
+        },
+        {
+                "游戏名称": "Vigor",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "4,831 (Steam 2024.9)",
+                "当前活跃玩家(2026.3)": "100-200(Steam)📉",
+                "累计销量/玩家": "2000万玩家(全平台)",
+                "商业表现": "✅长期稳定(主机为主)",
+                "核心USP": "主机F2P提取射击/TPS视角/2000万玩家",
+                "发行日期": "2019-08-19"
+        },
+        {
+                "游戏名称": "Incursion Red River",
+                "标签组合": "微恐、合作、射击、搜打撤",
+                "Steam峰值同时在线": "2,478 (2024.4.11)",
+                "当前活跃玩家(2026.3)": "800-1000📉小众稳定",
+                "累计销量/玩家": "29.6万份",
+                "商业表现": "⚠️小众市场",
+                "核心USP": "越南战争题材/PvE合作提取/战术真实感",
+                "发行日期": "2024-00-00"
+        },
+        {
+                "游戏名称": "The Forever Winter",
+                "标签组合": "微恐、合作、射击、搜打撤",
+                "Steam峰值同时在线": "12,611 (2024.9.24)",
+                "当前活跃玩家(2026.3)": "200-300📉热度下降",
+                "累计销量/玩家": "未公开",
+                "商业表现": "⚠️EA阶段小众",
+                "核心USP": "纯PvE设计/战争机器威胁/废土美学/反射击理念",
+                "发行日期": "2024-09-24"
+        },
+        {
+                "游戏名称": "Witchfire",
+                "标签组合": "微恐、射击、搜打撤",
+                "Steam峰值同时在线": "5,042 (2024.9.29)",
+                "当前活跃玩家(2026.3)": "200-400📉热度下降",
+                "累计销量/玩家": "50万份",
+                "商业表现": "✅EA成功",
+                "核心USP": "Roguelike+提取结合/单人PvE/魔法射击/高难度",
+                "发行日期": "2024-09-22"
+        },
+        {
+                "游戏名称": "Ready or Not",
+                "标签组合": "微恐、合作、射击",
+                "Steam峰值同时在线": "55,174 (2023.12.16)",
+                "当前活跃玩家(2026.3)": "1.8-2.5万📈稳定",
+                "累计销量/玩家": "未公开(估算百万级)",
+                "商业表现": "✅口碑销量双收",
+                "核心USP": "警察执法模拟/非致命选项/AI复杂行为/真实SWAT",
+                "发行日期": "2023-12-13"
+        },
+        {
+                "游戏名称": "Helldivers 2（绝地潜兵2）",
+                "标签组合": "合作、射击",
+                "Steam峰值同时在线": "458,709 (2024.2.24)",
+                "当前活跃玩家(2026.3)": "6-7万📈持续热门",
+                "累计销量/玩家": "未公开(估算千万级)",
+                "商业表现": "✅超级爆款收入极高",
+                "核心USP": "大规模PvE(数百敌人)/Warbond系统/现象级爆款",
+                "发行日期": "2024-02-08"
+        },
+        {
+                "游戏名称": "Deep Rock Galactic（深岩银河）",
+                "标签组合": "微恐、合作、射击",
+                "Steam峰值同时在线": "54,160",
+                "当前活跃玩家(2026.3)": "0.6-1.2万📈稳定",
+                "累计销量/玩家": "1420万玩家",
+                "商业表现": "✅长期稳定盈利",
+                "核心USP": "矿工采集玩法/程序生成洞穴/4职业配合/长期运营标杆",
+                "发行日期": "2020-05-13"
+        },
+        {
+                "游戏名称": "Phasmophobia（恐鬼症）",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "112,717 (2020.10.31)",
+                "当前活跃玩家(2026.3)": "1.2-1.7万📈稳定",
+                "累计销量/玩家": "未公开(估算千万级)",
+                "商业表现": "✅小成本高回报",
+                "核心USP": "捉鬼玩法/语音识别/VR支持/社交恐怖",
+                "发行日期": "2020-09-18"
+        },
+        {
+                "游戏名称": "Lethal Company",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "240,817 (2023.12.3)",
+                "当前活跃玩家(2026.3)": "3-7千🔻热度下降",
+                "累计销量/玩家": "未公开(估算数百万)",
+                "商业表现": "✅独立开发成功",
+                "核心USP": "病毒式传播/混乱喜剧恐怖/低价高性价比/独立开发奇迹",
+                "发行日期": "2023-10-23"
+        },
+        {
+                "游戏名称": "Back 4 Blood（喋血复仇）",
+                "标签组合": "合作、射击",
+                "Steam峰值同时在线": "65,987 (2021.10.16)",
+                "当前活跃玩家(2026.3)": "1-2千📉持续下降",
+                "累计销量/玩家": "未公开(估算数百万)",
+                "商业表现": "⚠️初期失望后期改善",
+                "核心USP": "L4D精神续作/卡组Build系统/AAA制作",
+                "发行日期": "2021-10-12"
+        },
+        {
+                "游戏名称": "World War Z: Aftermath（僵尸世界大战：劫后余生）",
+                "标签组合": "合作、射击",
+                "Steam峰值同时在线": "8,036 (2024.12.8)",
+                "当前活跃玩家(2026.3)": "1.5千📉低量稳定",
+                "累计销量/玩家": "3000万玩家",
+                "商业表现": "✅长尾稳定",
+                "核心USP": "大规模尸潮(数百僵尸)/多平台覆盖/3000万玩家",
+                "发行日期": "2021-09-21"
+        },
+        {
+                "游戏名称": "Remnant 2",
+                "标签组合": "合作、射击",
+                "Steam峰值同时在线": "110,856 (2023.7.30)",
+                "当前活跃玩家(2026.3)": "2-3千🔻DLC后波动",
+                "累计销量/玩家": "100万份(首周)",
+                "商业表现": "✅成功续作",
+                "核心USP": "类魂射击结合/程序生成/职业Build深度",
+                "发行日期": "2023-07-25"
+        },
+        {
+                "游戏名称": "SCP: Secret Laboratory",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "13,908 (日期未知)",
+                "当前活跃玩家(2026.3)": "3-5千📈稳定",
+                "累计销量/玩家": "1470万玩家估算",
+                "商业表现": "✅F2P成功",
+                "核心USP": "非对称PvP/SCP宇宙/F2P/社区驱动",
+                "发行日期": "2017-12-00"
+        },
+        {
+                "游戏名称": "Demonologist",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "8,806 (2023.4.9)",
+                "当前活跃玩家(2026.3)": "200-300📉热度下降",
+                "累计销量/玩家": "200万份",
+                "商业表现": "✅小成本成功",
+                "核心USP": "Phasmophobia竞品/恶魔学调查/多地图",
+                "发行日期": "2023-03-27"
+        },
+        {
+                "游戏名称": "Content Warning（内容警告）",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "204,439 (2024.4.2)",
+                "当前活跃玩家(2026.3)": "1-2千📉热度衰退",
+                "累计销量/玩家": "790万份(含免费)",
+                "商业表现": "✅低价高回报",
+                "核心USP": "病毒式传播/恐怖拍摄玩法/首日免费620万下载",
+                "发行日期": "2024-04-01"
+        },
+        {
+                "游戏名称": "Payday 3（收获日3）",
+                "标签组合": "合作、射击",
+                "Steam峰值同时在线": "77,938 (2023.9.21)",
+                "当前活跃玩家(2026.3)": "300-700📉惨淡失败",
+                "累计销量/玩家": "未公开",
+                "商业表现": "❌商业惨败亏损",
+                "核心USP": "抢劫玩法/Payday经典续作/多平台",
+                "发行日期": "2023-09-21"
+        },
+        {
+                "游戏名称": "Killing Floor 3",
+                "标签组合": "微恐、合作、射击",
+                "Steam峰值同时在线": "30,112 (2025.7.24)",
+                "当前活跃玩家(2026.3)": "200-600📉热度下降98%",
+                "累计销量/玩家": "未公开",
+                "商业表现": "⚠️EA初期挣扎",
+                "核心USP": "波次防守玩法/Killing Floor续作/EA早期",
+                "发行日期": "2025-07-24",
+                "Steam ID": "1430190"
+        },
+        {
+                "游戏名称": "Unfortunate Spacemen",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "11,823 (日期未知)",
+                "当前活跃玩家(2026.3)": "<10人💀几乎死亡",
+                "累计销量/玩家": "未公开",
+                "商业表现": "⚠️F2P小众",
+                "核心USP": "Among Us玩法/太空生存/F2P",
+                "发行日期": "2020-00-00"
+        },
+        {
+                "游戏名称": "Nightingale",
+                "标签组合": "合作",
+                "Steam峰值同时在线": "47,569 (2024.2.20)",
+                "当前活跃玩家(2026.3)": "300-500📉暴跌99%",
+                "累计销量/玩家": "64.4万份",
+                "商业表现": "⚠️EA挣扎中",
+                "核心USP": "维多利亚奇幻/生存建造/多世界",
+                "发行日期": "2024-02-20"
+        },
+        {
+                "游戏名称": "The Outlast Trials（逃生试炼）",
+                "标签组合": "微恐、合作",
+                "Steam峰值同时在线": "36,689 (2024.5.21)",
+                "当前活跃玩家(2026.3)": "3.5-4.5千📈稳定增长",
+                "累计销量/玩家": "未公开",
+                "商业表现": "✅持续盈利稳定",
+                "核心USP": "Outlast IP/冷战题材/极致恐怖体验/1-4人灵活组队",
+                "发行日期": "2024-03-05"
+        },
+        {
+                "游戏名称": "Resident Evil 4 Remake（生化危机4 重制版）",
+                "标签组合": "微恐、射击",
+                "Steam峰值同时在线": "167,373 (2023.3.24)",
+                "当前活跃玩家(2026.3)": "1.2-1.8千📉长尾期",
+                "累计销量/玩家": NaN,
+                "商业表现": "✅大成功",
+                "核心USP": "经典重制/精良画面/动作与恐怖平衡/可重玩性高",
+                "发行日期": "2023-03-24"
+        },
+        {
+                "游戏名称": "Resident Evil Village（生化危机8：村庄）",
+                "标签组合": "微恐、射击",
+                "Steam峰值同时在线": "106,631 (2021.5.7)",
+                "当前活跃玩家(2026.3)": "800-1.2千📉长尾期",
+                "累计销量/玩家": NaN,
+                "商业表现": "✅大成功",
+                "核心USP": "狼人题材/多Boss设计/射击爽快感/VR模式",
+                "发行日期": "2021-05-07"
+        },
+        {
+                "游戏名称": "Silent Hill 2 Remake（寂静岭2 重制版）",
+                "标签组合": "微恐",
+                "Steam峰值同时在线": "未公开 (主机优先)",
+                "当前活跃玩家(2026.3)": "N/A单机",
+                "累计销量/玩家": NaN,
+                "商业表现": "✅大成功",
+                "核心USP": "经典IP重制/心理恐怖深度/叙事驱动/多结局",
+                "发行日期": "2024-10-08"
+        },
+        {
+                "游戏名称": "Dead Space Remake（死亡空间 重制版）",
+                "标签组合": "微恐、射击",
+                "Steam峰值同时在线": "30,925 (2023.1.28)",
+                "当前活跃玩家(2026.3)": "1.5-2千📉长尾期",
+                "累计销量/玩家": NaN,
+                "商业表现": "⚠️未达预期",
+                "核心USP": "太空恐怖标杆/肢解系统/零重力战斗/沉浸感强",
+                "发行日期": "2023-01-27"
+        },
+        {
+                "游戏名称": "Alan Wake 2（心灵杀手2）",
+                "标签组合": "微恐、射击",
+                "Steam峰值同时在线": "Epic独占/无Steam数据",
+                "当前活跃玩家(2026.3)": "N/A单机",
+                "累计销量/玩家": NaN,
+                "商业表现": "✅盈利",
+                "核心USP": "叙事驱动/双主角视角/真人拍摄/电影级制作",
+                "发行日期": "2023-10-27"
+        },
+        {
+                "游戏名称": "Amnesia: The Bunker（失忆症：地堡）",
+                "标签组合": "微恐",
+                "Steam峰值同时在线": "2,423 (2023.6.6)",
+                "当前活跃玩家(2026.3)": "60-100📉小众稳定",
+                "累计销量/玩家": NaN,
+                "商业表现": "✅盈利",
+                "核心USP": "Amnesia系列/开放式玩法/AI猎杀/一战题材",
+                "发行日期": "2023-06-06"
+        },
+        {
+                "游戏名称": "The Cycle: Frontier",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "峰值约3-4万",
+                "当前活跃玩家(2026.3)": "💀已关服",
+                "累计销量/玩家": "未公开",
+                "商业表现": "❌彻底失败关服",
+                "核心USP": "科幻提取/F2P模式/外挂导致关服失败案例",
+                "发行日期": "2022-06-22"
+        },
+        {
+                "游戏名称": "Marauders",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "14,332 (2022.10.9)",
+                "当前活跃玩家(2026.3)": "<20人💀事实死亡",
+                "累计销量/玩家": "未公开",
+                "商业表现": "❌商业失败",
+                "核心USP": "太空+飞船战/科幻海盗/双层提取机制",
+                "发行日期": "2022-10-03"
+        },
+        {
+                "游戏名称": "GTFO",
+                "标签组合": "微恐、合作、射击",
+                "Steam峰值同时在线": "18,813 (2022.6.18)",
+                "当前活跃玩家(2026.3)": "500-1000📉停更后低量",
+                "累计销量/玩家": "未公开",
+                "商业表现": "⚠️停更前维持",
+                "核心USP": "极限难度4人协作/Rundown季节制/深度战术/地牢恐怖",
+                "发行日期": "2021-12-10"
+        },
+        {
+                "游戏名称": "Scavengers",
+                "标签组合": "微恐、合作、射击、搜打撤、PvPvE",
+                "Steam峰值同时在线": "16,787 (2021.5.2)",
+                "当前活跃玩家(2026.3)": "💀已关服",
+                "累计销量/玩家": "未公开",
+                "商业表现": "❌彻底失败关服",
+                "核心USP": "PvPvE BR混合/F2P/冰封废土",
+                "发行日期": "2021-05-01"
+        }
+];
+
+        // 完整的Steam游戏ID映射表（38款游戏）
+        const steamIds = {
+            // 核心竞品（GaaS微恐射击）
+            'Arc Raiders': '1808500',  // 修正：原为2270830
+            'Hunt: Showdown 1896': '594650',
+            'Escape from Tarkov（逃离塔科夫）': '3932890',  // 新增：已上线Steam！
+            'Gray Zone Warfare': '2479810',  // 修正：原为2548420
+            'Exoborne': '2705130',  // 修正：已上线！原为null
+            'Dark and Darker': '2016590',
+            'Vigor': '2818260',  // 修正：原为1076170
+            'Incursion Red River': '2116120',  // 修正：原为1489720
+            'The Forever Winter': '2828860',  // 修正：原为2828450
+            'Witchfire': '3156770',  // 修正：原为1058560
+            'Ready or Not': '1144200',
+            
+            // 合作射击
+            'Helldivers 2（绝地潜兵2）': '553850',
+            'Deep Rock Galactic（深岩银河）': '548430',
+            'Phasmophobia（恐鬼症）': '739630',
+            'Lethal Company': '1966720',
+            'Back 4 Blood（喋血复仇）': '924970',
+            'World War Z: Aftermath（僵尸世界大战：劫后余生）': '699130',
+            'Remnant 2': '1282100',
+            'SCP: Secret Laboratory': '700330',
+            'Demonologist': '1929610',  // 修正：原为1646630
+            'Content Warning（内容警告）': '2881650',
+            'Payday 3（收获日3）': '1272080',
+            'Killing Floor 3': '1430190',  // 修正：已上线！原为null
+            'Unfortunate Spacemen': '408900',
+            'Nightingale': '1928980',
+            'The Outlast Trials（逃生试炼）': '1304930',
+            'GTFO': '493520',
+            'Marauders': '1789480',
+            
+            // 单机恐怖标杆
+            'Resident Evil 4 Remake（生化危机4 重制版）': '2050650',
+            'Resident Evil Village（生化危机8：村庄）': '1196590',
+            'Silent Hill 2 Remake（寂静岭2 重制版）': '2124490',
+            'Dead Space Remake（死亡空间 重制版）': '1693980',
+            'Alan Wake（心灵杀手）': '108710',  // 改为Alan Wake 1
+            'Amnesia: The Bunker（失忆症：碉堡）': '1944430',
+            
+            // 失败案例
+            'The Cycle: Frontier': null, // 已关服
+            'Scavengers': null // 已关服
+        };
+
+        // 生成Steam链接
+        function getSteamLink(gameName) {
+            const steamId = steamIds[gameName];
+            if (steamId) {
+                return `https://store.steampowered.com/app/${steamId}`;
+            }
+            // 对于没有映射的游戏，返回Steam搜索链接
+            return `https://store.steampowered.com/search/?term=${encodeURIComponent(gameName)}`;
+        }
+
+        // 特殊游戏的自定义图片URL
+        const customImageUrls = {
+            'Escape from Tarkov（逃离塔科夫）': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3932890/e1367f10d469137a2ced522b642a9b1ee10450da/header.jpg?t=1770712130',
+            'Amnesia: The Bunker（失忆症：碉堡）': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1944430/header.jpg?t=1773329066'
+        };
+
+        // 生成游戏图片URL（使用Steam的header图片）
+        function getGameImage(gameName) {
+            // 优先使用自定义URL
+            if (customImageUrls[gameName]) {
+                return customImageUrls[gameName];
+            }
+            
+            const steamId = steamIds[gameName];
+            if (steamId) {
+                // 优先使用Steam CDN的header图片
+                return `https://cdn.akamai.steamstatic.com/steam/apps/${steamId}/header.jpg`;
+            }
+            // 默认占位图
+            return `https://via.placeholder.com/460x215/2d3748/38b2ac?text=${encodeURIComponent(gameName)}`;
+        }
+        
+        // 备用图片源（如果主CDN失败）
+        function getBackupImageUrl(steamId) {
+            return [
+                `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`,
+                `https://steamcdn-a.akamaihd.net/steam/apps/${steamId}/header.jpg`,
+                `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/header.jpg`
+            ];
+        }
+        
+        // 图片加载错误处理
+        function handleImageError(img, gameName) {
+            const steamId = steamIds[gameName];
+            if (!steamId) {
+                img.src = `https://via.placeholder.com/460x215/2d3748/38b2ac?text=${encodeURIComponent(gameName)}`;
+                return;
+            }
+            
+            // 如果还没尝试过备用源
+            if (!img.dataset.backupTried) {
+                img.dataset.backupTried = '1';
+                img.src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`;
+            } else if (img.dataset.backupTried === '1') {
+                img.dataset.backupTried = '2';
+                img.src = `https://steamcdn-a.akamaihd.net/steam/apps/${steamId}/header.jpg`;
+            } else if (img.dataset.backupTried === '2') {
+                img.dataset.backupTried = '3';
+                img.src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamId}/header.jpg`;
+            } else {
+                // 所有备用源都失败，使用占位图
+                img.src = `https://via.placeholder.com/460x215/2d3748/38b2ac?text=${encodeURIComponent(gameName)}`;
+            }
+        }
+
+        // 判断商业状态
+        function getBusinessStatus(performance) {
+            if (performance && (performance.includes('盈利') || performance.includes('成功'))) {
+                return 'success';
+            } else if (performance && (performance.includes('失败') || performance.includes('关服'))) {
+                return 'failed';
+            }
+            return 'normal';
+        }
+
+        // 渲染游戏卡片
+        function renderGames(games) {
+            const grid = document.getElementById('gamesGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (games.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            grid.innerHTML = games.map((game, index) => {
+                const tags = game.标签组合 ? game.标签组合.split('、') : [];
+                const status = getBusinessStatus(game.商业表现);
+                const badge = status === 'success' ? '商业成功' : status === 'failed' ? '已关服' : '运营中';
+                const badgeColor = status === 'success' ? 'rgba(72, 187, 120, 0.95)' : 
+                                   status === 'failed' ? 'rgba(245, 101, 101, 0.95)' : 
+                                   'rgba(237, 137, 54, 0.95)';
+
+                return `
+                    <div class="game-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="game-image">
+                            <img src="${getGameImage(game.游戏名称)}" 
+                                 alt="${game.游戏名称}"
+                                 onerror="handleImageError(this, '${game.游戏名称.replace(/'/g, "\\'")}')"
+                                 loading="lazy">
+                            <div class="game-badge" style="background: ${badgeColor}">${badge}</div>
+                        </div>
+                        <div class="game-content">
+                            <div class="game-title">
+                                <a href="${getSteamLink(game.游戏名称)}" target="_blank" class="steam-link" title="在Steam上查看">
+                                    ${game.游戏名称}
+                                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                        <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            
+                            <div class="game-tags">
+                                ${tags.map(tag => `<span class="tag">${tag.trim()}</span>`).join('')}
+                            </div>
+
+                            <div class="game-stats">
+                                <div class="stat-box">
+                                    <div class="stat-box-label">峰值同时在线</div>
+                                    <div class="stat-box-value">${game.Steam峰值同时在线 || 'N/A'}</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-box-label">当前活跃</div>
+                                    <div class="stat-box-value">${game['当前活跃玩家(2026.3)'] || 'N/A'}</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-box-label">累计销量/玩家</div>
+                                    <div class="stat-box-value">${game['累计销量/玩家'] || 'N/A'}</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-box-label">发行日期</div>
+                                    <div class="stat-box-value">${game.发行日期 || 'N/A'}</div>
+                                </div>
+                            </div>
+
+                            ${game.核心USP ? `<div class="game-usp">💡 ${game.核心USP}</div>` : ''}
+                            
+                            ${game.商业表现 ? `<div class="game-commercial">${game.商业表现}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 筛选功能
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function filterGames() {
+            let filtered = gamesData;
+
+            // 应用筛选
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(game => {
+                    const tags = game.标签组合 || '';
+                    const performance = game.商业表现 || '';
+                    
+                    switch(currentFilter) {
+                        case 'pvpve':
+                            return tags.includes('PvPvE');
+                        case 'pve':
+                            return tags.includes('合作') && !tags.includes('PvPvE');
+                        case '搜打撤':
+                            return tags.includes('搜打撤');
+                        case '社交恐怖':
+                            return tags.includes('社交恐怖');
+                        case '成功':
+                            return performance.includes('盈利') || performance.includes('成功');
+                        case '失败':
+                            return performance.includes('失败') || performance.includes('关服');
+                        default:
+                            return true;
+                    }
+                });
+            }
+
+            // 应用搜索
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                filtered = filtered.filter(game => {
+                    return (game.游戏名称 && game.游戏名称.toLowerCase().includes(searchLower)) ||
+                           (game.标签组合 && game.标签组合.toLowerCase().includes(searchLower)) ||
+                           (game.核心USP && game.核心USP.toLowerCase().includes(searchLower));
+                });
+            }
+
+            renderGames(filtered);
+            document.getElementById('totalGames').textContent = filtered.length;
+        }
+
+        // 筛选按钮点击事件
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                filterGames();
+            });
+        });
+
+        // 搜索框输入事件
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            currentSearch = e.target.value;
+            filterGames();
+        });
+
+        // 初始化渲染
+        renderGames(gamesData);
+    </script>
+</body>
+</html>
